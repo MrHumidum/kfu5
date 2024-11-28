@@ -81,7 +81,10 @@ namespace Lab5
 
         }
 
-
+        /// <summary>
+        /// Метод для печати матрицы.
+        /// </summary>
+        /// <param name="matrix">Матрица для печати</param>
         static void MatrixWriting(int[][] matrix)
         {
             Console.WriteLine("Матрица:");
@@ -90,7 +93,12 @@ namespace Lab5
                 Console.WriteLine(string.Join("\t", row));
             }
         }
-
+        /// <summary>
+        /// Метод для умножения матриц.
+        /// </summary>
+        /// <param name="matrix1">Первая матрица</param>
+        /// <param name="matrix2">Вторая матрица</param>
+        /// <returns>Результат умножения матриц</returns>
         static int[][] MatrixMultiplication(int[][] matrix1, int[][] matrix2)
         {
             int rows = matrix1.Length;
@@ -116,6 +124,11 @@ namespace Lab5
 
             return product;
         }
+        /// <summary>
+        /// Метод для чтения матрицы.
+        /// </summary>
+        /// <param name="matrix">Матрица для чтения</param>
+        /// <returns>True если матрица считана успешно, иначе false</returns>
         static bool MatrixReading(out int[][] matrix)
         {
             try
@@ -155,7 +168,9 @@ namespace Lab5
         }
 
 
-
+        /// <summary>
+        /// Упражнение 6.3: вычисление средней температуры по месяцам.
+        /// </summary>
         static void Ex3()
         {
             int months = 12;
@@ -189,7 +204,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Метод для вычисления средних температур по месяцам
+        /// Метод для вычисления средних температур по месяцам.
         /// </summary>
         /// <param name="temperature">Двумерный массив температур</param>
         /// <returns>Массив средних температур</returns>
@@ -211,7 +226,10 @@ namespace Lab5
 
             return averages;
         }
-
+        /// <summary>
+        /// Упражнение 6.4: подсчет гласных и согласных с использованием List.
+        /// </summary>
+        /// <param name="fileName">Путь к файлу</param>
         static void Ex4(string fileName)
         {
             if (File.Exists(fileName))
@@ -227,6 +245,11 @@ namespace Lab5
             }
 
         }
+        /// <summary>
+        /// Метод для подсчета гласных и согласных с использованием List.
+        /// </summary>
+        /// <param name="characters">Список символов</param>
+        /// <returns>Кортеж с количеством гласных и согласных</returns>
         static (int vowels, int consonants) CountVowelsAndConsonants(List<char> characters)
         {
             string vowelsList = "aeiouyаоуыиэеёюя";
@@ -249,7 +272,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Упражнение 6.2: умножение матриц с использованием LinkedList.
+        /// Упражнение 6.5: умножение матриц с использованием LinkedList.
         /// </summary>
         static void Ex5()
         {
@@ -282,8 +305,10 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Метод для чтения матрицы в формате LinkedList<LinkedList<int>>.
+        /// Метод для чтения матрицы с использованием LinkedList.
         /// </summary>
+        /// <param name="matrix">Матрица для чтения</param>
+        /// <returns>True если матрица считана успешно, иначе false</returns>
         static bool MatrixReading(out LinkedList<LinkedList<int>> matrix)
         {
             try
@@ -326,9 +351,12 @@ namespace Lab5
             }
         }
 
-        /// <summary>s
-        /// Метод для умножения матриц в формате LinkedList<LinkedList<int>>.
+        /// <summary>
+        /// Метод для умножения матриц с использованием LinkedList.
         /// </summary>
+        /// <param name="matrix1">Первая матрица</param>
+        /// <param name="matrix2">Вторая матрица</param>
+        /// <returns>Результат умножения матриц</returns>
         static LinkedList<LinkedList<int>> MatrixMultiplication(LinkedList<LinkedList<int>> matrix1, LinkedList<LinkedList<int>> matrix2)
         {
             int rows = matrix1.Count;
@@ -359,8 +387,9 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Метод для извлечения столбца из матрицы LinkedList<LinkedList<int>>.
+        /// Метод для печати матрицы с использованием LinkedList.
         /// </summary>
+        /// <param name="matrix">Матрица для печати</param>
         static LinkedList<int> GetColumn(LinkedList<LinkedList<int>> matrix, int columnIndex)
         {
             LinkedList<int> column = new LinkedList<int>();

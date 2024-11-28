@@ -2,34 +2,44 @@
 
 namespace Homework4
 {
+    /// <summary>
+    /// Структура, представляющая студента
+    /// </summary>
     struct Student
     {
-        public string firstName;
-
-        public string lastName;
-        public DateTime birthYear;
-        public string examName;
-        public int score;
+        public string firstName; ///< Имя студента
+        public string lastName; ///< Фамилия студента
+        public DateTime birthYear; ///< Год рождения студента
+        public string examName; ///< Название экзамена
+        public int score; ///< Оценка за экзамен
     }
+    /// <summary>
+    /// Структура, представляющая бабушку
+    /// </summary>
     struct Babushka
     {
-        public string name;
-        public int age;
-        public List<string> deseases;
-        public List<string> medicines;
-        public string status;
+        public string name; ///< Имя бабушки
+        public int age; ///< Возраст бабушки
+        public List<string> deseases; ///< Список болезней бабушки
+        public List<string> medicines; ///< Список лекарств от болезней
+        public string status; ///< Статус бабушки (например, "жива", "в больнице")
     }
 
+    /// <summary>
+    /// Структура, представляющая больницу
+    /// </summary>
     struct Hospital
     {
-        public string name;
-        public List<string> deseases;
-        public int capacity;
-        public int waitList;
+        public string name; ///< Название больницы
+        public List<string> deseases; ///< Список болезней, которые лечит больница
+        public int capacity; ///< Вместимость больницы
+        public int waitList; ///< Список ожидающих пациентов
     }
-
     class Program
     {
+        /// <summary>
+        /// Пример 1: Перемешивание списка файлов в каталоге
+        /// </summary>
         static void Ex1()
         {
             string imageDirectory = "image";
@@ -63,7 +73,9 @@ namespace Homework4
                 Console.WriteLine($"{i + 1}: {fileList[i]}");
             }
         }
-
+        /// <summary>
+        /// Пример 2: Работа со студентами
+        /// </summary>
         static void Ex2()
         {
             Dictionary<string, Student> students = new Dictionary<string, Student>();
@@ -110,6 +122,11 @@ namespace Homework4
                 }
             } while (choice != '5');
         }
+        /// <summary>
+        /// Загрузка данных о студентах из файла
+        /// </summary>
+        /// <param name="filePath">Путь к файлу</param>
+        /// <param name="students">Словарь студентов</param>
         static void LoadStudentsFromFile(string filePath, Dictionary<string, Student> students)
         {
             if (File.Exists(filePath))
@@ -139,12 +156,21 @@ namespace Homework4
                 Console.WriteLine("Файл не найден. Начинаем с пустого списка.");
             }
         }
+        /// <summary>
+        /// Сохранение данных о студентах в файл
+        /// </summary>
+        /// <param name="filePath">Путь к файлу</param>
+        /// <param name="students">Словарь студентов</param>
         static void SaveStudentsToFile(string filePath, Dictionary<string, Student> students)
         {
             var lines = students.Values.Select(s => $"{s.firstName},{s.lastName},{s.birthYear},{s.examName},{s.score}");
             File.WriteAllLines(filePath, lines);
         }
-
+        /// <summary>
+        /// Добавление нового студента
+        /// </summary>
+        /// <param name="students">Словарь студентов</param>
+        /// <returns>True, если студент добавлен успешно, иначе False</returns>
         static bool AddStudent(Dictionary<string, Student> students)
         {
             try
@@ -185,7 +211,10 @@ namespace Homework4
                 return false;
             }
         }
-
+        /// <summary>
+        /// Удаление студента из списка
+        /// </summary>
+        /// <param name="students">Словарь студентов</param>
         static void RemoveStudent(Dictionary<string, Student> students)
         {
             Console.Write("Введите имя: ");
@@ -203,7 +232,10 @@ namespace Homework4
                 Console.WriteLine("Студент не найден.");
             }
         }
-
+        /// <summary>
+        /// Сортировка студентов по баллам
+        /// </summary>
+        /// <param name="students">Словарь студентов</param>
         static void SortStudents(Dictionary<string, Student> students)
         {
             var sorted = students.Values.OrderBy(s => s.score).ToList();
@@ -213,7 +245,10 @@ namespace Homework4
                 Console.WriteLine($"{student.lastName},{student.firstName},{student.birthYear.ToString("yyyy")},{student.examName},{student.score}");
             }
         }
-
+        /// <summary>
+        /// Вывод всех студентов
+        /// </summary>
+        /// <param name="students">Словарь студентов</param>
         static void PrintAllStudents(Dictionary<string, Student> students)
         {
             Console.WriteLine("\nСписок всех студентов:");
@@ -222,6 +257,9 @@ namespace Homework4
                 Console.WriteLine($"{student.lastName},{student.firstName},{student.birthYear.ToString("yyyy")},{student.examName},{student.score}");
             }
         }
+        /// <summary>
+        /// Пример 4: Поиск кратчайшего пути в графе
+        /// </summary>
         static void Ex4()
         {
             Dictionary<string, List<string>> graph = new Dictionary<string, List<string>>
@@ -234,11 +272,18 @@ namespace Homework4
         { "F", new List<string> { "C", "E" } }
     };
 
-            List<string> path = BFS(graph, "A", "F");
+            List<string> path = FindShortestPath(graph, "A", "F");
             Console.WriteLine($"Кратчайший путь: {string.Join(" -> ", path)}");
         }
+        /// <summary>
+        /// Нахождение кратчайшего пути в графе
+        /// </summary>
+        /// <param name="graph">Граф, представленный в виде словаря</param>
+        /// <param name="start">Стартовая вершина</param>
+        /// <param name="end">Конечная вершина</param>
+        /// <returns>Список вершин кратчайшего пути или null, если путь не найден</returns>
 
-        static List<string> BFS(Dictionary<string, List<string>> graph, string start, string goal)
+        static List<string> FindShortestPath(Dictionary<string, List<string>> graph, string start, string goal)
         {
             Queue<List<string>> queue = new Queue<List<string>>();
             queue.Enqueue(new List<string> { start });
