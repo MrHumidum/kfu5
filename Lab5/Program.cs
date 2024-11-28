@@ -382,9 +382,9 @@ namespace Lab5
             {
                 foreach (var item in row)
                 {
-                    Console.Write(item + "\t"); // Вывод элемента с табуляцией
+                    Console.Write(item + "\t");
                 }
-                Console.WriteLine(); // Переход на новую строку после завершения вывода строки
+                Console.WriteLine();
             }
         }
 
